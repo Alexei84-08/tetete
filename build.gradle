@@ -108,16 +108,16 @@ allOpen {
 //  }
 //}
 
-//quarkusBuild {
-//  nativeArgs {
-//    containerBuild = true
-//    builderImage = "quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21"
-//  }
-//}
-
-tasks.quarkusDev {
-  workingDirectory = rootProject.projectDir
+quarkusBuild {
+  nativeArgs {
+    containerBuild = true
+    builderImage = "quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21"
+  }
 }
+
+//tasks.quarkusDev {
+//  workingDirectory = rootProject.projectDir
+//}
 
 compileKotlin {
     kotlinOptions.javaParameters = true
