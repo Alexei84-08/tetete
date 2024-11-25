@@ -14,7 +14,8 @@ node('builder') { // node/agent
 
   stage('Build') {
 //     tools {
-      jdk 'GraalVM'
+      jdk 'graalvm-jdk-21.0.5+9.1'
+//       jdk 'GraalVM'
   //     jdk 'jdk_1.6.0_45'
 //     }
     print.startPipeline(appName)
