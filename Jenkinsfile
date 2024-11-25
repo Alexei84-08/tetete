@@ -13,19 +13,18 @@ node('builder') { // node/agent
 
 
   stage('Build') {
-//     tools {
+    tools {
       jdk 'graalvm-jdk-21.0.5+9.1'
 //       jdk 'GraalVM'
   //     jdk 'jdk_1.6.0_45'
-//     }
+    }
     print.startPipeline(appName)
     cleanWs()
     checkout scm
     print.gradleBuildApp(appName)
     print.gradleBuildProject()
 //     sh './gradlew clean build --refresh-dependencies'
-    sh './gradlew clean build -x test -Dorg.gradle.java.home=/src/jvm/graalvm-jdk-21.0.5+9.1 -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm
-    --refresh-dependencies'
+    sh './gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm --refresh-dependencies'
     print.gradleBuildProjectResult(resultStatus)
   }
 
