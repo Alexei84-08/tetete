@@ -22,8 +22,8 @@ node('builder') { // node/agent
     checkout scm
     print.gradleBuildApp(appName)
     print.gradleBuildProject()
-    sh './gradlew clean build --refresh-dependencies'
-//     sh './gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm --refresh-dependencies'
+//     sh './gradlew clean build --refresh-dependencies'
+    sh './gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm --refresh-dependencies'
     print.gradleBuildProjectResult(resultStatus)
   }
 
