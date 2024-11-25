@@ -12,7 +12,7 @@ node('builder') { // node/agent
 
   tools {
     jdk 'GraalVM'
-    jdk 'jdk_1.6.0_45'
+//     jdk 'jdk_1.6.0_45'
   }
 
   stage('Build') {
@@ -22,7 +22,7 @@ node('builder') { // node/agent
     print.gradleBuildApp(appName)
     print.gradleBuildProject()
 //     sh './gradlew clean build --refresh-dependencies'
-    sh './gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm --refresh-dependencies'
+//     sh './gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm --refresh-dependencies'
     print.gradleBuildProjectResult(resultStatus)
   }
 
