@@ -10,12 +10,13 @@ properties([disableConcurrentBuilds()])
 
 node('builder') { // node/agent
 
-  tools {
-    jdk 'GraalVM'
-//     jdk 'jdk_1.6.0_45'
-  }
+
 
   stage('Build') {
+    tools {
+      jdk 'GraalVM'
+  //     jdk 'jdk_1.6.0_45'
+    }
     print.startPipeline(appName)
     cleanWs()
     checkout scm
