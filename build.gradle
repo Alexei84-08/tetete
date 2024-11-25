@@ -1,0 +1,127 @@
+plugins {
+  id 'org.jetbrains.kotlin.jvm' version "2.0.21"
+  id "org.jetbrains.kotlin.plugin.allopen" version "2.0.21"
+  id 'org.jetbrains.kotlin.plugin.serialization' version "2.0.21"
+  id 'io.quarkus'
+}
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+
+//  flatDir {
+//    dirs("libs")
+//  }
+}
+
+dependencies {
+  implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+  implementation 'io.quarkus:quarkus-kotlin'
+  implementation 'io.quarkus:quarkus-rest-kotlin-serialization'
+  implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+  implementation 'io.quarkus:quarkus-arc'
+  implementation 'io.quarkus:quarkus-rest'
+  testImplementation 'io.quarkus:quarkus-junit5'
+  testImplementation 'io.rest-assured:rest-assured'
+
+//  implementation "io.quarkiverse.freemarker:quarkus-freemarker:1.1.0"
+
+//  implementation "io.quarkiverse.web-bundler:quarkus-web-bundler:1.7.3"
+//  implementation "io.quarkus:quarkus-reactive-routes"
+
+//  implementation 'io.quarkus:quarkus-security-jpa'
+//  implementation 'io.quarkus:quarkus-security'
+//  implementation "io.quarkus:quarkus-hibernate-orm"
+//  implementation 'io.quarkus:quarkus-hibernate-orm-panache'
+//  implementation 'io.quarkus:quarkus-hibernate-orm-panache-kotlin'
+
+
+//  runtimeOnly files('libs.flexmark-all-0.64.8.jar')
+//  api('com.vladsch.flexmark:flexmark-all:0.64.8')
+//  implementation 'flexmark-all:0.64.8'
+
+//  implementation 'flexmark-all:0.64.8'
+
+
+  // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-all
+//  implementation 'com.vladsch.flexmark:flexmark-all:0.64.8'
+  // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-ext-tables
+//  implementation 'com.vladsch.flexmark:flexmark-ext-tables:0.64.8'
+  // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-util-sequence
+//  implementation 'com.vladsch.flexmark:flexmark-util-sequence:0.64.8'
+  // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-util-ast
+//  implementation 'com.vladsch.flexmark:flexmark-util-ast:0.64.8'
+
+  // https://mvnrepository.com/artifact/org.jsoup/jsoup
+//  implementation 'org.jsoup:jsoup:1.18.1'
+
+//  implementation "io.quarkus:quarkus-hibernate-orm"
+//  implementation 'io.quarkus:quarkus-jdbc-postgresql'
+
+//  implementation 'io.quarkus:quarkus-resteasy'
+
+////  implementation 'io.quarkus:quarkus-hibernate-orm-panache-kotlin'
+////  implementation 'io.quarkus:quarkus-jdbc-postgresql'
+//
+//  implementation("io.quarkus:quarkus-hibernate-reactive-panache-kotlin")
+//  implementation("io.quarkus:quarkus-reactive-pg-client")
+
+////  logging
+//  implementation 'org.jboss.slf4j:slf4j-jboss-logmanager'
+//  implementation 'io.quarkiverse.logging.logback:quarkus-logging-logback:1.1.2'
+//  implementation 'org.slf4j:slf4j-api:2.0.16'
+//  implementation 'org.slf4j:slf4j-simple:2.0.16'
+
+
+}
+
+group 'ru.dalexi'
+version '1.0.0-SNAPSHOT'
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_21
+  targetCompatibility = JavaVersion.VERSION_21
+}
+
+test {
+  systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+}
+allOpen {
+  annotation("jakarta.ws.rs.Path")
+  annotation("jakarta.enterprise.context.ApplicationScoped")
+  annotation("jakarta.persistence.Entity")
+  annotation("io.quarkus.test.junit.QuarkusTest")
+}
+
+//kotlin {
+//  compilerOptions {
+////        jvmTarget.set(JvmTarget.JVM_17)
+//    javaParameters.set(true)
+//  }
+//}
+//
+//kotlin {
+//    compileTestKotlin {
+////    jvmTarget.set(JvmTarget.JVM_21)
+////        javaParameters.set(true)
+//  }
+//}
+
+//quarkusBuild {
+//  nativeArgs {
+//    containerBuild = true
+//    builderImage = "quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21"
+//  }
+//}
+
+tasks.quarkusDev {
+  workingDirectory = rootProject.projectDir
+}
+
+compileKotlin {
+    kotlinOptions.javaParameters = true
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_21
+}
