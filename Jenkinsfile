@@ -13,10 +13,10 @@ node('builder') { // node/agent
 
 
   stage('Build') {
-    tools {
+//     tools {
       jdk 'GraalVM'
   //     jdk 'jdk_1.6.0_45'
-    }
+//     }
     print.startPipeline(appName)
     cleanWs()
     checkout scm
