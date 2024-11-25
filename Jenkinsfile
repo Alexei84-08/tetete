@@ -28,7 +28,9 @@ node('builder') { // node/agent
 //     sh 'GRAALVM_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1 ./gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm
 //     sh 'GRAALVM_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1'
 //     sh 'JAVA_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1'
-    sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build'
+    sh './gradlew build'
+//     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build -Dquarkus.native.remote-container-build=true'
+//     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build'
 //     sh './gradlew clean build -x test --stacktrace -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm'
 //     sh './gradlew clean quarkusBuild -x test --stacktrace -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm'
 
