@@ -3,6 +3,7 @@ plugins {
   id "org.jetbrains.kotlin.plugin.allopen" version "2.0.21"
   id 'org.jetbrains.kotlin.plugin.serialization' version "2.0.21"
   id 'io.quarkus'
+  id 'org.graalvm.buildtools.native' version '0.10.3'
 }
 
 repositories {
