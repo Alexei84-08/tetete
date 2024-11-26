@@ -30,7 +30,7 @@ node('builder') { // node/agent
 //     sh 'JAVA_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1'
 //     sh './gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true'
 //     sh 'docker buildx -f src/main/docker/Dockerfile -t quarkus-quickstart/getting-started .'
-    sh 'docker buildx -t quarkus-quickstart/getting-started .'
+    sh 'docker buildx .'
 //     sh './gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true'
 //     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build -Dquarkus.native.remote-container-build=true'
 //     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build'
