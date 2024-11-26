@@ -23,24 +23,32 @@ node('builder') { // node/agent
     checkout scm
     print.gradleBuildApp(appName)
     print.gradleBuildProject()
-//     sh './gradlew clean build --refresh-dependencies'
-//     sh './gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm --refresh-dependencies'
-//     sh 'GRAALVM_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1 ./gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm
-//     sh 'GRAALVM_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1'
-//     sh 'JAVA_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1'
-//     sh './gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true'
-//     sh 'docker buildx -f src/main/docker/Dockerfile -t quarkus-quickstart/getting-started .'
-    sh 'docker build -t quarkus-quickstart/getting-started .'
-//     sh './gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true'
-//     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build -Dquarkus.native.remote-container-build=true'
-//     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build'
-//     sh './gradlew clean build -x test --stacktrace -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm'
-//     sh './gradlew clean quarkusBuild -x test --stacktrace -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm'
+    //     sh './gradlew clean build --refresh-dependencies'
+    //     sh './gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm --refresh-dependencies'
+    //     sh 'GRAALVM_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1 ./gradlew clean build -x test -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm
+    //     sh 'GRAALVM_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1'
+    //     sh 'JAVA_HOME=/src/jvm/graalvm-jdk-21.0.5+9.1'
+    //     sh './gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true'
+    //     sh 'docker buildx -f src/main/docker/Dockerfile -t quarkus-quickstart/getting-started .'
+    print.dockerRemoveContainer()
+    sh 'docker rm -f izo'
+    print.dockerRemoveContainerResult(resultStatus)
+    print.dockerRemoveImager()
+    sh 'docker rmi -f izo:tag'
+    print.dockerRemoveImagerResult(resultStatus)
+    print.dockerBuildImager()
+    sh 'docker build -t izo:tag .'
+    print.dockerBuildImagerResult(resultStatus)
+    //     sh './gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true'
+    //     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build -Dquarkus.native.remote-container-build=true'
+    //     sh './gradlew -Dquarkus.native.container-build=true -Dquarkus.package.type=native build'
+    //     sh './gradlew clean build -x test --stacktrace -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm'
+    //     sh './gradlew clean quarkusBuild -x test --stacktrace -Dquarkus.native.enabled=true -Dquarkus.native.builder-image=graalvm'
 
-//     print.gradleBuildProjectResult(resultStatus)
+    print.gradleBuildProjectResult(resultStatus)
   }
 
-//   stage('Run') {
+stage('Run') {
 //     print.runApp(appName)
 //     print.dockerRemoveContainer()
 //     sh 'docker rm -f appmarket'
@@ -51,9 +59,9 @@ node('builder') { // node/agent
 //     print.dockerBuildImager()
 //     sh 'docker build -t appmarket:tag .'
 //     print.dockerBuildImagerResult(resultStatus)
-//     print.dockerRunContainer()
-//     sh 'docker run --restart=always --name appmarket --env-file /externaldata/appmarket/env/appmarket.env -p 1410:1410 -v /appmarket/logs:/appmarket/logs -v /appmarket/apk:/appmarket/apk -u root -e TZ=Europe/Moscow -d appmarket:tag'
-//     print.dockerRunContainerResult(resultStatus)
-//     print.endPipeline(appName)
+    print.dockerRunContainer()
+    sh 'docker run --restart=always --name izo -p 8183:8183 -v /izo/logs:/izo/logs -u root -e TZ=Europe/Moscow -d izo:tag'
+    print.dockerRunContainerResult(resultStatus)
+    print.endPipeline(appName)
 //   }
 }
