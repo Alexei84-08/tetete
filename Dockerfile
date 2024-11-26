@@ -12,7 +12,8 @@ COPY --chown=quarkus:quarkus settings.gradle /code/
 ##FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21 AS build
 FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:jdk-21 AS build
 USER root
-RUN microdnf install findutils
+#RUN microdnf install findutils
+RUN apt-get update && apt-get add findutils
 COPY --chown=quarkus:quarkus gradlew /code/gradlew
 COPY --chown=quarkus:quarkus gradle /code/gradle
 COPY --chown=quarkus:quarkus build.gradle /code/

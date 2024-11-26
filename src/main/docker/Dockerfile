@@ -2,7 +2,7 @@
 ##FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21 AS build
 FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:jdk-21 AS build
 USER root
-#RUN microdnf install findutils
+RUN microdnf install findutils
 #RUN /usr/sbin/apk update && /usr/sbin/apk add findutils
 #RUN apt-get update && apt-get add findutils
 COPY --chown=quarkus:quarkus gradlew /code/gradlew
