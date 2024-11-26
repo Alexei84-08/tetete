@@ -3,7 +3,7 @@
 FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:jdk-21 AS build
 USER root
 #RUN microdnf install findutils
-RUN /sbin/apk update && /sbin/apk add findutils
+RUN /usr/sbin/apk update && /usr/sbin/apk add findutils
 #RUN apt-get update && apt-get add findutils
 COPY --chown=quarkus:quarkus gradlew /code/gradlew
 COPY --chown=quarkus:quarkus gradle /code/gradle
