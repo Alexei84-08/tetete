@@ -63,5 +63,5 @@ stage('Run') {
     sh 'docker run --restart=always --name izo -p 8183:8183 -v /izo/logs:/izo/logs -u root -e TZ=Europe/Moscow -d izo:tag'
     print.dockerRunContainerResult(resultStatus)
     print.endPipeline(appName)
-//   }
+  }
 }
