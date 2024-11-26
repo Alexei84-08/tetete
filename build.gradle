@@ -3,7 +3,7 @@ plugins {
   id "org.jetbrains.kotlin.plugin.allopen" version "2.0.21"
   id 'org.jetbrains.kotlin.plugin.serialization' version "2.0.21"
   id 'io.quarkus'
-  id 'org.graalvm.buildtools.native' version '0.10.3'
+//  id 'org.graalvm.buildtools.native' version '0.10.3'
 }
 
 repositories {
@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.quarkus:quarkus-container-image-docker'
   implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
   implementation 'io.quarkus:quarkus-kotlin'
   implementation 'io.quarkus:quarkus-rest-kotlin-serialization'
@@ -108,18 +109,19 @@ allOpen {
 //  }
 //}
 
-quarkusBuild {
-  nativeArgs {
-    containerBuild = true
-    builderImage = "quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21"
-  }
-}
+//quarkusBuild {
+//  nativeArgs {
+//    containerBuild = true
+//    builderImage = "quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21"
+//  }
+//}
 
 //tasks.quarkusDev {
 //  workingDirectory = rootProject.projectDir
 //}
 
 compileKotlin {
+  kotlinOptions.jvmTarget = JavaVersion.VERSION_21
     kotlinOptions.javaParameters = true
 }
 

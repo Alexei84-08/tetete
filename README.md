@@ -78,3 +78,6 @@ Easily start your REST Web Services
 [//]: # (JAVA_HOME=/home/alex/Документы/develop/app_src/jvm/graalvm-jdk-21.0.5+9.1 native-image --native-image-info -jar )
 
 [//]: # (/home/alex/IdeaProjects/izoservice/build/izoservice-1.0.0-SNAPSHOT-native-image-source-jar/izoservice-1.0.0-SNAPSHOT-runner)
+
+
+[//]: # (docker build -f src/main/docker/Dockerfile -t quarkus-quickstart/getting-started .)
