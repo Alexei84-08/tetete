@@ -5,7 +5,7 @@
 def print = printBuildStep
 def appName = "izo"
 def resultStatus = "SUCCESS"
-def appRootPath = $(pwd)+'/'+develop_root_path+'/'+appName
+def appRootPath = develop_root_path+'/'+appName
 
 properties([disableConcurrentBuilds()])
 
@@ -13,8 +13,8 @@ node('builder') { // node/agent
 
 stage('Build') {
 echo '========================================================================'
-// echo rootPath + '/' + appName
-// echo pwd
+echo rootPath + '/' + appName
+echo pwd
 echo '------------------------------'
 
     sh 'docker rm -f izo'
@@ -23,7 +23,7 @@ echo '------------------------------'
 
     sh 'docker build -t izo:tag .'
 
-    sh 'docker run --restart=always --name izo -p 8183:8183 -v '+appRootPath+'/logs:/izo/logs -u root -e TZ=Europe/Moscow -d izo:tag'
+    sh 'docker run --restart=always --name izo -p 8183:8183 -v '+pwd+'/'+appRootPath+'/logs:/izo/logs -u root -e TZ=Europe/Moscow -d izo:tag'
 
 
 // sh 'echo $develop_root_path'
