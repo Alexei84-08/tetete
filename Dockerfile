@@ -1,6 +1,7 @@
 ## Stage 1 : build with maven builder image with native capabilities
 ##FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21 AS build
 FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:jdk-21 AS build
+LABEL stage=quarkus-builder
 USER root
 RUN microdnf install findutils
 COPY --chown=quarkus:quarkus gradlew /code/gradlew
