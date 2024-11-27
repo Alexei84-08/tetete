@@ -13,7 +13,7 @@ node('builder') { // node/agent
 
 stage('Build') {
 echo '========================================================================'
-echo rootPath + '/' + appName
+// echo rootPath + '/' + appName
 echo pwd
 echo '------------------------------'
 
