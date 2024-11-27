@@ -13,6 +13,7 @@ node('builder') { // node/agent
 stage('Build') {
 echo '========================================================================'
 echo '${develop_root_path}'
+echo develop_root_path
 }
 
 
