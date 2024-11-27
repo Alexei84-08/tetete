@@ -14,6 +14,8 @@ node('builder') { // node/agent
 stage('Build') {
 echo '========================================================================'
 echo rootPath + '/' + appName
+echo pwd
+echo $(pwd)
 echo '------------------------------'
 
     sh 'docker rm -f izo'
