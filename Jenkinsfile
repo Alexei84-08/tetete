@@ -5,7 +5,7 @@
 def print = printBuildStep
 def appName = "izo"
 def resultStatus = "SUCCESS"
-def appRootPath = pwd+'/'+develop_root_path+'/'+appName
+def appRootPath = $(pwd)+'/'+develop_root_path+'/'+appName
 
 properties([disableConcurrentBuilds()])
 
