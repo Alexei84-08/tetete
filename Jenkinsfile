@@ -5,6 +5,7 @@
 def print = printBuildStep
 def appName = "izo"
 def resultStatus = "SUCCESS"
+def rootPath = develop_root_path
 
 properties([disableConcurrentBuilds()])
 
@@ -12,10 +13,10 @@ node('builder') { // node/agent
 
 stage('Build') {
 echo '========================================================================'
-echo develop_root_path
+echo rootPath
 echo '------------------------------'
 
-sh 'echo $develop_root_path'
+// sh 'echo $develop_root_path'
 }
 
 
