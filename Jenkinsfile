@@ -13,7 +13,7 @@ node('builder') { // node/agent
 
 stage('Build') {
 echo '========================================================================'
-echo rootPath
+echo rootPath'/'izo
 echo '------------------------------'
 
 // sh 'echo $develop_root_path'
