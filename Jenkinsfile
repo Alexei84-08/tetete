@@ -21,10 +21,11 @@ echo '------------------------------'
 
     sh 'docker rmi -f izo:tag'
 
-    sh 'docker build --no-cache --rm -t izo:tag .'
+//     sh 'docker build --no-cache --rm -t izo:tag .'
+    sh 'docker build --build-arg BUILD_ID --no-cache --rm -t izo:tag .'
 
     sh 'docker run --restart=always --name izo -p 8183:8183 -v '+pwd+'/'+appRootPath+'/logs:/izo/logs -u root -e TZ=Europe/Moscow -d izo:tag'
-    sh 'docker image prune --filter label=stage=quarkus-builder'
+    sh 'docker image prune --filter label=stage=builder --filter label=build=$BUILD_ID'
 
 
 // sh 'echo $develop_root_path'
