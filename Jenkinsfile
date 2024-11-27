@@ -24,8 +24,7 @@ echo '------------------------------'
 
     sh 'docker build -t izo:tag .'
 
-    sh 'docker run --restart=always --name izo -p 8183:8183 -v 'pwd+'/'+rootPath+'/izo/logs:/izo/logs -u root -e TZ=Europe/Moscow
-    -d izo:tag'
+    sh 'docker run --restart=always --name izo -p 8183:8183 -v '+pwd+'/'+rootPath+'/izo/logs:/izo/logs -u root -e TZ=Europe/Moscow -d izo:tag'
 
 
 // sh 'echo $develop_root_path'
